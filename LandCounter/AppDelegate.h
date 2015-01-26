@@ -15,6 +15,7 @@
 @property (weak) IBOutlet NSTextField *wantedLands;
 @property (weak) IBOutlet NSTextField *byTurn;
 @property (weak) IBOutlet NSTextField *probabilityLabel;
+@property (weak) IBOutlet NSPopUpButton *playOrDrawButton;
 
 - (IBAction)calculatePercentage:(id)sender;
 

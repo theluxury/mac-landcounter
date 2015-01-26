@@ -32,9 +32,17 @@
     _numberOfLandsInt = [_numberOfLands integerValue];
     _wantedLandsInt = [_wantedLands integerValue];
     _byTurnInt = [_byTurn integerValue];
+    NSInteger numberOfCardsInHand;
     
     // Assuming on play for now. Is 6 because turn 1, you have 7 cards.
-    NSInteger numberOfCardsInHand = _byTurnInt + 6;
+    if ([[_playOrDrawButton titleOfSelectedItem] isEqualToString:@"Play"]) {
+        numberOfCardsInHand = _byTurnInt + 6;
+        NSLog(@"on play");
+    }
+    else {
+        numberOfCardsInHand = _byTurnInt + 7;
+        NSLog(@"on draw");
+    }
     
     float probability = [self findProbabilityOfHavingAtLeastXLandsInYCards:_wantedLandsInt numberOfCardsInHard:numberOfCardsInHand];
     [_probabilityLabel setStringValue:[NSString stringWithFormat:@"%f%%", probability]];
