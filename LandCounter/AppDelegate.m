@@ -37,7 +37,8 @@
     NSInteger numberOfCardsInHand = _byTurnInt + 6;
     
     float probability = [self findProbabilityOfHavingAtLeastXLandsInYCards:_wantedLandsInt numberOfCardsInHard:numberOfCardsInHand];
-    NSLog(@"probability is %f", probability);
+    [_probabilityLabel setStringValue:[NSString stringWithFormat:@"%f%%", probability]];
+
 }
 
 - (float)findProbabilityOfHavingAtLeastXLandsInYCards:(NSInteger)lands numberOfCardsInHard:(NSInteger)cards {
