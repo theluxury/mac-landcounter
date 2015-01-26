@@ -46,8 +46,6 @@
     // Think 50k is roughly good enough.
     float probability = [self runSimulations:50000 numberOfLands:_wantedLandsInt numberOfCardsInHand:numberOfCardsInHand];
     [_probabilityLabel setStringValue:[NSString stringWithFormat:@"%f%%", probability]];
-    
-
 }
 
 
