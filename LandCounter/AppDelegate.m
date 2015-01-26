@@ -28,6 +28,7 @@
 }
 
 - (IBAction)calculatePercentage:(id)sender {
+
     _sizeOfDeckInt = [_sizeOfDeck integerValue];
     _numberOfLandsInt = [_numberOfLands integerValue];
     _wantedLandsInt = [_wantedLands integerValue];
@@ -37,53 +38,56 @@
     // Assuming on play for now. Is 6 because turn 1, you have 7 cards.
     if ([[_playOrDrawButton titleOfSelectedItem] isEqualToString:@"Play"]) {
         numberOfCardsInHand = _byTurnInt + 6;
-        NSLog(@"on play");
     }
     else {
         numberOfCardsInHand = _byTurnInt + 7;
-        NSLog(@"on draw");
     }
     
-    float probability = [self findProbabilityOfHavingAtLeastXLandsInYCards:_wantedLandsInt numberOfCardsInHard:numberOfCardsInHand];
+    // Think 50k is roughly good enough.
+    float probability = [self runSimulations:50000 numberOfLands:_wantedLandsInt numberOfCardsInHand:numberOfCardsInHand];
     [_probabilityLabel setStringValue:[NSString stringWithFormat:@"%f%%", probability]];
+    
 
 }
 
-- (float)findProbabilityOfHavingAtLeastXLandsInYCards:(NSInteger)lands numberOfCardsInHard:(NSInteger)cards {
-    float probability = 0;
-    // Take sum of probability of lands from wanted lands to number of cards in hand.
-    for (NSInteger i = lands; i <= cards; i++) {
-        // Find probability of having i lands in numberOfCardsInHand cards.
-        probability = probability + [self findProbabilityOfHavingXLandsInYCards:i numberOfCardsInHand:cards];
+
+- (float)runSimulations:(NSInteger)numberOfSimulations numberOfLands:(NSInteger)lands numberOfCardsInHand:(NSInteger)cards {
+    
+    float numberOfHits = 0;
+    for (int i = 0; i < numberOfSimulations; i++) {
+        if ([self getAtLeastXLandsInYCards:lands numberOfCardsInHard:cards])
+            numberOfHits ++;
     }
     
-    return probability;
+    return numberOfHits / (float) numberOfSimulations ;
 }
 
-- (float)findProbabilityOfHavingXLandsInYCards:(NSInteger)lands numberOfCardsInHand:(NSInteger)cards {
-    // is (number of lands in deck choose number of lands) * (number of non lands in deck choose number of non lands in hand) / (deck size choose hand size).
+- (BOOL)getAtLeastXLandsInYCards:(NSInteger)lands numberOfCardsInHard:(NSInteger)cards {
     
-    // (number of lands in deck choose number of lands)
-    NSInteger numberOfNonLandsInHand = cards - lands;
-    NSInteger numberOfNonLandsInDeck = _sizeOfDeckInt - _numberOfLandsInt;
-    float a = 1;
-    for (int i = 0; i < lands; i++) {
-        a = a * (_numberOfLandsInt - i) / (lands - i);
-    }
+    NSMutableIndexSet *randomNumbersAlreadyGenerated = [[NSMutableIndexSet alloc] init];
+    int numberOfLandsInHand = 0;
     
-    // number of non lands in deck choose number of non lands in hand
-    float b = 1;
-    for (int i = 0; i < numberOfNonLandsInHand; i++) {
-        b = b * (numberOfNonLandsInDeck - i) / (numberOfNonLandsInHand - i);
-    }
-    
-    // deck size choose hand size
-    float c = 1;
     for (int i = 0; i < cards; i++) {
-        c = c * (_sizeOfDeckInt - i) / (cards - i);
+        // First, make an NSSet that contains the numbers already generated.
+        int r;
+        // Generate a random number until you get one that hasn't been hit yet.
+        do {
+            r = arc4random_uniform(_sizeOfDeckInt);
+        } while ([randomNumbersAlreadyGenerated containsIndex:r]);
+        // So this r is not in the index set yet, so add it.
+        [randomNumbersAlreadyGenerated addIndex:r];
+        
+        // Want less than since r starts at 0 and ends at _sizeOfDeckInt - 1. 
+        if (r < _numberOfLandsInt) {
+            numberOfLandsInHand++;
+        }
     }
     
-    return (a * b) / c;
+    // return YES if the simulation has at least that many lands, no if it doesn't.
+    if (numberOfLandsInHand >= lands)
+        return YES;
+    else
+        return NO;
 }
 
 @end
