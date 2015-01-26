@@ -1,0 +1,413 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9C79AA381A75E3E800B2008C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C79AA371A75E3E800B2008C /* AppDelegate.m */; };
+		9C79AA3A1A75E3E800B2008C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C79AA391A75E3E800B2008C /* main.m */; };
+		9C79AA3C1A75E3E800B2008C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C79AA3B1A75E3E800B2008C /* Images.xcassets */; };
+		9C79AA3F1A75E3E800B2008C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C79AA3D1A75E3E800B2008C /* MainMenu.xib */; };
+		9C79AA4B1A75E3E800B2008C /* LandCounterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C79AA4A1A75E3E800B2008C /* LandCounterTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9C79AA451A75E3E800B2008C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9C79AA291A75E3E700B2008C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9C79AA301A75E3E800B2008C;
+			remoteInfo = LandCounter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9C79AA311A75E3E800B2008C /* LandCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LandCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C79AA351A75E3E800B2008C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C79AA361A75E3E800B2008C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9C79AA371A75E3E800B2008C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9C79AA391A75E3E800B2008C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9C79AA3B1A75E3E800B2008C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9C79AA3E1A75E3E800B2008C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9C79AA441A75E3E800B2008C /* LandCounterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LandCounterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C79AA491A75E3E800B2008C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C79AA4A1A75E3E800B2008C /* LandCounterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LandCounterTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9C79AA2E1A75E3E800B2008C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C79AA411A75E3E800B2008C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9C79AA281A75E3E700B2008C = {
+			isa = PBXGroup;
+			children = (
+				9C79AA331A75E3E800B2008C /* LandCounter */,
+				9C79AA471A75E3E800B2008C /* LandCounterTests */,
+				9C79AA321A75E3E800B2008C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9C79AA321A75E3E800B2008C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9C79AA311A75E3E800B2008C /* LandCounter.app */,
+				9C79AA441A75E3E800B2008C /* LandCounterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9C79AA331A75E3E800B2008C /* LandCounter */ = {
+			isa = PBXGroup;
+			children = (
+				9C79AA361A75E3E800B2008C /* AppDelegate.h */,
+				9C79AA371A75E3E800B2008C /* AppDelegate.m */,
+				9C79AA3B1A75E3E800B2008C /* Images.xcassets */,
+				9C79AA3D1A75E3E800B2008C /* MainMenu.xib */,
+				9C79AA341A75E3E800B2008C /* Supporting Files */,
+			);
+			path = LandCounter;
+			sourceTree = "<group>";
+		};
+		9C79AA341A75E3E800B2008C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C79AA351A75E3E800B2008C /* Info.plist */,
+				9C79AA391A75E3E800B2008C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9C79AA471A75E3E800B2008C /* LandCounterTests */ = {
+			isa = PBXGroup;
+			children = (
+				9C79AA4A1A75E3E800B2008C /* LandCounterTests.m */,
+				9C79AA481A75E3E800B2008C /* Supporting Files */,
+			);
+			path = LandCounterTests;
+			sourceTree = "<group>";
+		};
+		9C79AA481A75E3E800B2008C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C79AA491A75E3E800B2008C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9C79AA301A75E3E800B2008C /* LandCounter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C79AA4E1A75E3E800B2008C /* Build configuration list for PBXNativeTarget "LandCounter" */;
+			buildPhases = (
+				9C79AA2D1A75E3E800B2008C /* Sources */,
+				9C79AA2E1A75E3E800B2008C /* Frameworks */,
+				9C79AA2F1A75E3E800B2008C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LandCounter;
+			productName = LandCounter;
+			productReference = 9C79AA311A75E3E800B2008C /* LandCounter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9C79AA431A75E3E800B2008C /* LandCounterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C79AA511A75E3E800B2008C /* Build configuration list for PBXNativeTarget "LandCounterTests" */;
+			buildPhases = (
+				9C79AA401A75E3E800B2008C /* Sources */,
+				9C79AA411A75E3E800B2008C /* Frameworks */,
+				9C79AA421A75E3E800B2008C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9C79AA461A75E3E800B2008C /* PBXTargetDependency */,
+			);
+			name = LandCounterTests;
+			productName = LandCounterTests;
+			productReference = 9C79AA441A75E3E800B2008C /* LandCounterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9C79AA291A75E3E700B2008C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Mark Wang";
+				TargetAttributes = {
+					9C79AA301A75E3E800B2008C = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					9C79AA431A75E3E800B2008C = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 9C79AA301A75E3E800B2008C;
+					};
+				};
+			};
+			buildConfigurationList = 9C79AA2C1A75E3E700B2008C /* Build configuration list for PBXProject "LandCounter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9C79AA281A75E3E700B2008C;
+			productRefGroup = 9C79AA321A75E3E800B2008C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9C79AA301A75E3E800B2008C /* LandCounter */,
+				9C79AA431A75E3E800B2008C /* LandCounterTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9C79AA2F1A75E3E800B2008C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C79AA3C1A75E3E800B2008C /* Images.xcassets in Resources */,
+				9C79AA3F1A75E3E800B2008C /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C79AA421A75E3E800B2008C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9C79AA2D1A75E3E800B2008C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C79AA3A1A75E3E800B2008C /* main.m in Sources */,
+				9C79AA381A75E3E800B2008C /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C79AA401A75E3E800B2008C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C79AA4B1A75E3E800B2008C /* LandCounterTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9C79AA461A75E3E800B2008C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9C79AA301A75E3E800B2008C /* LandCounter */;
+			targetProxy = 9C79AA451A75E3E800B2008C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9C79AA3D1A75E3E800B2008C /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C79AA3E1A75E3E800B2008C /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9C79AA4C1A75E3E800B2008C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9C79AA4D1A75E3E800B2008C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9C79AA4F1A75E3E800B2008C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = LandCounter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9C79AA501A75E3E800B2008C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = LandCounter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		9C79AA521A75E3E800B2008C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LandCounterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LandCounter.app/Contents/MacOS/LandCounter";
+			};
+			name = Debug;
+		};
+		9C79AA531A75E3E800B2008C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LandCounterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LandCounter.app/Contents/MacOS/LandCounter";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9C79AA2C1A75E3E700B2008C /* Build configuration list for PBXProject "LandCounter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C79AA4C1A75E3E800B2008C /* Debug */,
+				9C79AA4D1A75E3E800B2008C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C79AA4E1A75E3E800B2008C /* Build configuration list for PBXNativeTarget "LandCounter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C79AA4F1A75E3E800B2008C /* Debug */,
+				9C79AA501A75E3E800B2008C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9C79AA511A75E3E800B2008C /* Build configuration list for PBXNativeTarget "LandCounterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C79AA521A75E3E800B2008C /* Debug */,
+				9C79AA531A75E3E800B2008C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9C79AA291A75E3E700B2008C /* Project object */;
+}
