@@ -19,6 +19,7 @@
 @property (nonatomic) NSInteger numberOfColoredLandsInt;
 @property (nonatomic) NSInteger colorlessSpellCostInt;
 @property (nonatomic) NSInteger coloredSpellCostInt;
+@property (nonatomic) NSInteger playOrDrawNumberOfCards;
 
 @end
 
@@ -33,70 +34,58 @@
 }
 
 - (IBAction)calculatePercentage:(id)sender {
-
-    _sizeOfDeckInt = [_sizeOfDeck integerValue];
-    _numberOfLandsInt = [_numberOfLands integerValue];
-    _wantedLandsInt = [_wantedLands integerValue];
-    _byTurnInt = [_byTurn integerValue];
-    NSInteger numberOfCardsInHand;
-    
-    // Assuming on play for now. Is 6 because turn 1, you have 7 cards.
-    if ([[_playOrDrawButton titleOfSelectedItem] isEqualToString:@"Play"]) {
-        numberOfCardsInHand = _byTurnInt + 6;
-    }
-    else {
-        numberOfCardsInHand = _byTurnInt + 7;
-    }
+    [self setNumbers];
     
     // Think 50k is roughly good enough.
-    float probability = [self runSimulations:50000 numberOfLands:_wantedLandsInt numberOfCardsInHand:numberOfCardsInHand];
+    float probability = [self runSimulations:@"lands" numberOfSimulation:50000];
     [_probabilityLabel setStringValue:[NSString stringWithFormat:@"%f%%", probability]];
 }
 
 - (IBAction)calculateCastPercentage:(id)sender {
+    [self setNumbers];
+
+    
+    float probability = [self runSimulations:@"cast" numberOfSimulation:50000];
+    [_castProbabilityLabel setStringValue:[NSString stringWithFormat:@"%f%%", probability]];
+    
+}
+
+- (void)setNumbers {
     _sizeOfDeckInt = [_sizeOfDeck integerValue];
     _numberOfLandsInt = [_numberOfLands integerValue];
+    _wantedLandsInt = [_wantedLands integerValue];
+    _byTurnInt = [_byTurn integerValue];
+    
     _numberOfColoredLandsInt = [_numberOfColoredLands integerValue];
     _castByTunInt = [_castByTurn integerValue];
     _colorlessSpellCostInt = [_colorlessCostOfSpell integerValue];
     _coloredSpellCostInt = [_coloredCostOfSpell integerValue];
     
-    
-    
-    NSInteger numberOfCardsInHand;
-    
-    // This is 1 lower than the lands thing because for you to cast the spell, you're assuming that at least one of your cards is not a land.
     if ([[_playOrDrawButton titleOfSelectedItem] isEqualToString:@"Play"]) {
-        numberOfCardsInHand = _castByTunInt + 6;
+        _playOrDrawNumberOfCards =  6;
     }
     else {
-        numberOfCardsInHand = _castByTunInt + 7;
+        _playOrDrawNumberOfCards =  7;
     }
-    
-    float probability = [self runCastingSimulations:50000 coloredCost:_coloredSpellCostInt colorlessCost:_colorlessSpellCostInt cards:numberOfCardsInHand];
-    [_castProbabilityLabel setStringValue:[NSString stringWithFormat:@"%f%%", probability]];
-    
+
 }
 
-- (float)runCastingSimulations:(NSInteger)numberOfSimulations coloredCost:(NSInteger)colored colorlessCost:(NSInteger)colorless cards:(NSInteger)cards {
+- (float)runSimulations:(NSString *)simulationType numberOfSimulation:(NSInteger)numberOfSimulations{
     
     float numberOfHits = 0;
-    for (int i = 0; i < numberOfSimulations; i++) {
-        if ([self getAtLeastXColoredAndYColorlessInZCards:colored colorless:colorless cards:cards])
-            numberOfHits ++;
-    }
-    
-    return numberOfHits / (float) numberOfSimulations ;
-    
-    
-}
-
-- (float)runSimulations:(NSInteger)numberOfSimulations numberOfLands:(NSInteger)lands numberOfCardsInHand:(NSInteger)cards {
-    
-    float numberOfHits = 0;
-    for (int i = 0; i < numberOfSimulations; i++) {
-        if ([self getAtLeastXLandsInYCards:lands numberOfCardsInHard:cards])
-            numberOfHits ++;
+    if ([simulationType isEqualToString:@"lands"]) {
+        NSInteger numberOfCardsInHand = _byTurnInt + _playOrDrawNumberOfCards;
+        for (int i = 0; i < numberOfSimulations; i++) {
+            if ([self getAtLeastXLandsInYCards:_wantedLandsInt numberOfCardsInHard:numberOfCardsInHand])
+                numberOfHits ++;
+        }
+    } else {
+        // Different number of cards in hand, since two different inputs. 
+        NSInteger numberOfCardsInHand = _castByTunInt + _playOrDrawNumberOfCards;
+        for (int i = 0; i < numberOfSimulations; i++) {
+            if ([self getAtLeastXColoredAndYColorlessInZCards:_coloredSpellCostInt colorless:_colorlessSpellCostInt cards:numberOfCardsInHand])
+                numberOfHits ++;
+        }
     }
     
     return numberOfHits / (float) numberOfSimulations ;
