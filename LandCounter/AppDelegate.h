@@ -19,14 +19,18 @@
 @property (weak) IBOutlet NSTextField *byTurn;
 @property (weak) IBOutlet NSTextField *probabilityLabel;
 
-@property (weak) IBOutlet NSTextField *castProbabilityLabel;
 @property (weak) IBOutlet NSTextField *colorlessCostOfSpell;
 @property (weak) IBOutlet NSTextField *coloredCostOfSpell;
 @property (weak) IBOutlet NSTextField *numberOfColoredLands;
-@property (weak) IBOutlet NSTextField *castByTurn; 
+@property (weak) IBOutlet NSTextField *castByTurn;
+@property (weak) IBOutlet NSTextField *castProbabilityLabel;
+
+
+
 
 - (IBAction)calculatePercentage:(id)sender;
 - (IBAction)calculateCastPercentage:(id)sender;
+- (IBAction)calculateGoldCastPercentage:(id)sender;
 
 
 @end

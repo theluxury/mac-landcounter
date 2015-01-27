@@ -21,6 +21,14 @@
 @property (nonatomic) NSInteger coloredSpellCostInt;
 @property (nonatomic) NSInteger playOrDrawNumberOfCards;
 
+@property (nonatomic) NSInteger *colorlessCostOfGoldSpell;
+@property (nonatomic) NSInteger *coloredCostOfGoldSpellA;
+@property (nonatomic) NSInteger *coloredCostOfGoldSpellB;
+@property (nonatomic) NSInteger *numberOfDualLands;
+@property (nonatomic) NSInteger *numberOfColoredLandsA;
+@property (nonatomic) NSInteger *numberOfColoredLandsB;
+@property (nonatomic) NSInteger *castGoldByTurn;
+
 @end
 
 @implementation AppDelegate
@@ -47,6 +55,13 @@
     
     float probability = [self runSimulations:@"cast" numberOfSimulation:50000];
     [_castProbabilityLabel setStringValue:[NSString stringWithFormat:@"%f%%", probability]];
+    
+}
+
+- (IBAction)calculateGoldCastPercentage:(id)sender {
+    [self setNumbers];
+    float probability = [self runSimulations:@"cast" numberOfSimulation:50000];
+    NSLog(@"probability is %f", probability);
     
 }
 
