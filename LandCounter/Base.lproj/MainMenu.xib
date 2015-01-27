@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="byTurn" destination="Ija-8g-7RN" id="BaC-D2-xZu"/>
                 <outlet property="castByTurn" destination="tje-6j-NJF" id="QkQ-Xt-nwj"/>
+                <outlet property="castProbabilityLabel" destination="vbB-ML-5E2" id="2Nz-r6-TV3"/>
                 <outlet property="coloredCostOfSpell" destination="KYv-eM-Rxm" id="cCm-Ec-EId"/>
                 <outlet property="colorlessCostOfSpell" destination="252-Sh-3PA" id="Rqv-Z6-Hqw"/>
                 <outlet property="numberOfColoredLands" destination="U1H-7x-RpA" id="LvX-aq-CPE"/>
