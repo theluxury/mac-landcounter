@@ -10,11 +10,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LandCounter/AppDelegate.m"
-            timestampString = "444189294.818998"
+            timestampString = "444191571.202688"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "-canCastGoldSpellInXCards:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LandCounter/AppDelegate.m"
+            timestampString = "444191571.202688"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "-canCastGoldSpellInXCards:"
             landmarkType = "5">
          </BreakpointContent>

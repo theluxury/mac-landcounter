@@ -183,23 +183,66 @@
 - (BOOL)canCastGoldSpellInXCards:(NSInteger)cards {
 
     
-    BOOL haveSpellInHand = NO;
+    BOOL haveSpellInHand;
     NSMutableIndexSet *randomNumbersAlreadyGenerated;
     int numberOfLandsInHand;
     int numberOfDualLandsInHand;
     int numberOfColoredLandsAInHand;
     int numberOfColoredLandsBInHand;
     
+    int initialNumberOfCardsInHand;
+    
     // Do while loop here since you run the simulation until you get a situation where you actually draw the card in your hand.
     do {
         randomNumbersAlreadyGenerated = [[NSMutableIndexSet alloc] init];
+        haveSpellInHand = NO;
         numberOfLandsInHand = 0;
         numberOfDualLandsInHand = 0;
         numberOfColoredLandsAInHand = 0;
         numberOfColoredLandsBInHand = 0;
+        // Shold actually be 7, but because we put the initialNumberOfCardsInHand-- in beginning of next do loop, this gets set at 8.
+        initialNumberOfCardsInHand = 8;
         
-        // No longer need to subtract 1 from relevant because they're all relevant now, not assuming 1 is given, since that only works if your deck has exactly 1 of that cmc card.
-        for (int i = 0; i < cards; i++) {
+        do {
+            initialNumberOfCardsInHand--;
+            randomNumbersAlreadyGenerated = [[NSMutableIndexSet alloc] init];
+            haveSpellInHand = NO;
+            numberOfLandsInHand = 0;
+            numberOfDualLandsInHand = 0;
+            numberOfColoredLandsAInHand = 0;
+            numberOfColoredLandsBInHand = 0;
+            // No longer need to subtract 1 from relevant because they're all relevant now, not assuming 1 is given, since that only works if your deck has exactly 1 of that cmc card.
+            for (int i = 0; i < initialNumberOfCardsInHand; i++) {
+                // First, make an NSSet that contains the numbers already generated.
+                int r;
+                // Generate a random number until you get one that hasn't been hit yet.
+                do {
+                    r = arc4random_uniform(_sizeOfDeckInt);
+                } while ([randomNumbersAlreadyGenerated containsIndex:r]);
+                // So this r is not in the index set yet, so add it.
+                [randomNumbersAlreadyGenerated addIndex:r];
+                
+                // Want less than since r starts at 0 and ends at _sizeOfDeckInt - 2.
+                if (r < _numberOfDualLands) {
+                    numberOfDualLandsInHand++;
+                    numberOfLandsInHand++;
+                } else if (r < (_numberOfDualLands + _numberOfColoredLandsA)) {
+                    numberOfColoredLandsAInHand++;
+                    numberOfLandsInHand++;
+                } else if (r < (_numberOfDualLands + _numberOfColoredLandsA + _numberOfColoredLandsB)) {
+                    numberOfColoredLandsBInHand++;
+                    numberOfLandsInHand++;
+                } else if (r < _numberOfLandsInt) {
+                    numberOfLandsInHand++;
+                } else if (r< _numberOfLandsInt + _numberOfSpells) {
+                    haveSpellInHand = YES;
+                }
+            }
+            // mullgain if you have less than 2 lands or more than 5 lands, but only if you more than 4 cards. if you're at 4 cards, you're keeping regardless.
+        } while ([self checkForMulligan:numberOfLandsInHand numberOfCards:initialNumberOfCardsInHand]);
+        
+        // This is after mulligan rules. Minute 7 here because you care about turn, not how many cards are actually in hand.
+        for (int i = 0; i < (cards - 7) ; i++) {
             // First, make an NSSet that contains the numbers already generated.
             int r;
             // Generate a random number until you get one that hasn't been hit yet.
@@ -208,7 +251,7 @@
             } while ([randomNumbersAlreadyGenerated containsIndex:r]);
             // So this r is not in the index set yet, so add it.
             [randomNumbersAlreadyGenerated addIndex:r];
-        
+            
             // Want less than since r starts at 0 and ends at _sizeOfDeckInt - 2.
             if (r < _numberOfDualLands) {
                 numberOfDualLandsInHand++;
@@ -225,7 +268,11 @@
                 haveSpellInHand = YES;
             }
         }
+        
     } while (haveSpellInHand == NO);
+    
+    if (initialNumberOfCardsInHand < 7)
+        NSLog(@"cards is %li and number of cards in hand is %li and initial hand size is %i", cards, [randomNumbersAlreadyGenerated count], initialNumberOfCardsInHand);
     
     NSInteger totalCost = _colorlessCostOfGoldSpell + _coloredCostOfGoldSpellA + _coloredCostOfGoldSpellB;
     if (numberOfLandsInHand < totalCost)
@@ -251,8 +298,14 @@
     
     // defaults to return no. 
     return NO;
+}
 
+- (BOOL)checkForMulligan:(NSInteger)numberOfLands numberOfCards:(NSInteger) numberOfCards {
+    // mullgain if you have less than 2 lands or more than 5 lands, but only if you more than 4 cards. if you're at 4 cards, you're keeping regardless.
+    if ((numberOfLands < 2 || numberOfLands > 5) && numberOfCards > 4)
+        return YES;
     
+    return NO;
 }
 
 @end
