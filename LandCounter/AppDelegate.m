@@ -21,6 +21,8 @@
 @property (nonatomic) NSInteger coloredSpellCostInt;
 @property (nonatomic) NSInteger playOrDrawNumberOfCards;
 
+
+@property (nonatomic) NSInteger numberOfSpells;
 @property (nonatomic) NSInteger colorlessCostOfGoldSpell;
 @property (nonatomic) NSInteger coloredCostOfGoldSpellA;
 @property (nonatomic) NSInteger coloredCostOfGoldSpellB;
@@ -28,6 +30,7 @@
 @property (nonatomic) NSInteger numberOfColoredLandsA;
 @property (nonatomic) NSInteger numberOfColoredLandsB;
 @property (nonatomic) NSInteger castGoldByTurn;
+
 
 @end
 
@@ -178,42 +181,51 @@
 }
 
 - (BOOL)canCastGoldSpellInXCards:(NSInteger)cards {
-    // Bah, I'll generalize it tomorrow.
+
     
-    NSMutableIndexSet *randomNumbersAlreadyGenerated = [[NSMutableIndexSet alloc] init];
-    int numberOfLandsInHand = 0;
-    int numberOfDualLandsInHand = 0;
-    int numberOfColoredLandsAInHand = 0;
-    int numberOfColoredLandsBInHand = 0;
+    BOOL haveSpellInHand = NO;
+    NSMutableIndexSet *randomNumbersAlreadyGenerated;
+    int numberOfLandsInHand;
+    int numberOfDualLandsInHand;
+    int numberOfColoredLandsAInHand;
+    int numberOfColoredLandsBInHand;
     
-    NSInteger numberOfRelevantCardsInHand = cards - 1;
-    // This is sizeOfDeck - 1 because one again, assumed that one of the cards is the spell you want to cast.
-    NSInteger numberOfRelevantCardsInDeck = _sizeOfDeckInt - 1;
-    
-    for (int i = 0; i < numberOfRelevantCardsInHand; i++) {
-        // First, make an NSSet that contains the numbers already generated.
-        int r;
-        // Generate a random number until you get one that hasn't been hit yet.
-        do {
-            r = arc4random_uniform(numberOfRelevantCardsInDeck);
-        } while ([randomNumbersAlreadyGenerated containsIndex:r]);
-        // So this r is not in the index set yet, so add it.
-        [randomNumbersAlreadyGenerated addIndex:r];
+    // Do while loop here since you run the simulation until you get a situation where you actually draw the card in your hand.
+    do {
+        randomNumbersAlreadyGenerated = [[NSMutableIndexSet alloc] init];
+        numberOfLandsInHand = 0;
+        numberOfDualLandsInHand = 0;
+        numberOfColoredLandsAInHand = 0;
+        numberOfColoredLandsBInHand = 0;
         
-        // Want less than since r starts at 0 and ends at _sizeOfDeckInt - 2.
-        if (r < _numberOfDualLands) {
-            numberOfDualLandsInHand++;
-            numberOfLandsInHand++;
-        } else if (r < (_numberOfDualLands + _numberOfColoredLandsA)) {
-            numberOfColoredLandsAInHand++;
-            numberOfLandsInHand++;
-        } else if (r < (_numberOfDualLands + _numberOfColoredLandsA + _numberOfColoredLandsB)) {
-            numberOfColoredLandsBInHand++;
-            numberOfLandsInHand++;
-        } else if (r < _numberOfLandsInt) {
-            numberOfLandsInHand++;
+        // No longer need to subtract 1 from relevant because they're all relevant now, not assuming 1 is given, since that only works if your deck has exactly 1 of that cmc card.
+        for (int i = 0; i < cards; i++) {
+            // First, make an NSSet that contains the numbers already generated.
+            int r;
+            // Generate a random number until you get one that hasn't been hit yet.
+            do {
+                r = arc4random_uniform(_sizeOfDeckInt);
+            } while ([randomNumbersAlreadyGenerated containsIndex:r]);
+            // So this r is not in the index set yet, so add it.
+            [randomNumbersAlreadyGenerated addIndex:r];
+        
+            // Want less than since r starts at 0 and ends at _sizeOfDeckInt - 2.
+            if (r < _numberOfDualLands) {
+                numberOfDualLandsInHand++;
+                numberOfLandsInHand++;
+            } else if (r < (_numberOfDualLands + _numberOfColoredLandsA)) {
+                numberOfColoredLandsAInHand++;
+                numberOfLandsInHand++;
+            } else if (r < (_numberOfDualLands + _numberOfColoredLandsA + _numberOfColoredLandsB)) {
+                numberOfColoredLandsBInHand++;
+                numberOfLandsInHand++;
+            } else if (r < _numberOfLandsInt) {
+                numberOfLandsInHand++;
+            } else if (r< _numberOfLandsInt + _numberOfSpells) {
+                haveSpellInHand = YES;
+            }
         }
-    }
+    } while (haveSpellInHand == NO);
     
     NSInteger totalCost = _colorlessCostOfGoldSpell + _coloredCostOfGoldSpellA + _coloredCostOfGoldSpellB;
     if (numberOfLandsInHand < totalCost)
