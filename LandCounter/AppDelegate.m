@@ -271,8 +271,8 @@
         
     } while (haveSpellInHand == NO);
     
-    if (initialNumberOfCardsInHand < 7)
-        NSLog(@"cards is %li and number of cards in hand is %li and initial hand size is %i", cards, [randomNumbersAlreadyGenerated count], initialNumberOfCardsInHand);
+//    if (initialNumberOfCardsInHand < 7)
+////        NSLog(@"cards is %li and number of cards in hand is %li and initial hand size is %i", cards, [randomNumbersAlreadyGenerated count], initialNumberOfCardsInHand);
     
     NSInteger totalCost = _colorlessCostOfGoldSpell + _coloredCostOfGoldSpellA + _coloredCostOfGoldSpellB;
     if (numberOfLandsInHand < totalCost)
@@ -302,7 +302,7 @@
 
 - (BOOL)checkForMulligan:(NSInteger)numberOfLands numberOfCards:(NSInteger) numberOfCards {
     // mullgain if you have less than 2 lands or more than 5 lands, but only if you more than 4 cards. if you're at 4 cards, you're keeping regardless.
-    if ((numberOfLands < 2 || numberOfLands > 5) && numberOfCards > 4)
+    if ((numberOfLands < 2 || numberOfLands > 5) && numberOfCards > 5)
         return YES;
     
     return NO;
